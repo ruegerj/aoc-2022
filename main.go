@@ -24,7 +24,7 @@ func main() {
 	}
 
 	fmt.Println(timeLeftMsg)
-	fmt.Println("usage: go run day-<nr>/day<nr>p<1|2>")
+	fmt.Println("usage: go run ./day-<nr>")
 }
 
 func daysUntilXMas() int {
