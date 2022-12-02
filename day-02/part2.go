@@ -9,18 +9,6 @@ func Part2(input string) int {
 		"C": Scissors,
 	}
 
-	loosingCombination := map[string]string{
-		Paper:    Rock,
-		Scissors: Paper,
-		Rock:     Scissors,
-	}
-
-	winningCombination := map[string]string{
-		Scissors: Rock,
-		Rock:     Paper,
-		Paper:    Scissors,
-	}
-
 	games := strings.Split(input, "\n")
 	score := 0
 

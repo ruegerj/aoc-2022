@@ -9,3 +9,15 @@ var operandScores = map[string]int{
 	Paper:    2,
 	Scissors: 3,
 }
+
+var loosingCombination = map[string]string{
+	Paper:    Rock,
+	Scissors: Paper,
+	Rock:     Scissors,
+}
+
+var winningCombination = map[string]string{
+	Scissors: Rock,
+	Rock:     Paper,
+	Paper:    Scissors,
+}

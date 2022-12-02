@@ -1,6 +1,8 @@
 package day02
 
-import "strings"
+import (
+	"strings"
+)
 
 func Part1(input string) int {
 	games := strings.Split(input, "\n")
@@ -27,9 +29,7 @@ func Part1(input string) int {
 			continue
 		}
 
-		winsRound := (own == Rock && opponent == Scissors) || (own == Paper && opponent == Rock) || (own == Scissors && opponent == Paper)
-
-		if !winsRound {
+		if winningCombination[opponent] != own {
 			continue
 		}
 
