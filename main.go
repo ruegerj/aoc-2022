@@ -8,6 +8,7 @@ import (
 
 	day01 "github.com/ruegerj/aoc-2022/day-01"
 	day02 "github.com/ruegerj/aoc-2022/day-02"
+	day03 "github.com/ruegerj/aoc-2022/day-03"
 	"github.com/ruegerj/aoc-2022/util"
 	"golang.org/x/exp/slices"
 )
@@ -51,6 +52,7 @@ func main() {
 	dayRegistry := map[int]func(){
 		1: func() { runDay(1, day01.Part1, day01.Part2) },
 		2: func() { runDay(2, day02.Part1, day02.Part2) },
+		3: func() { runDay(3, day03.Part1, day03.Part2) },
 	}
 
 	requestedDay := dayRegistry[dayNr]
