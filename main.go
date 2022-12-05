@@ -10,6 +10,7 @@ import (
 	day02 "github.com/ruegerj/aoc-2022/day-02"
 	day03 "github.com/ruegerj/aoc-2022/day-03"
 	day04 "github.com/ruegerj/aoc-2022/day-04"
+	day05 "github.com/ruegerj/aoc-2022/day-05"
 	"github.com/ruegerj/aoc-2022/util"
 	"golang.org/x/exp/slices"
 )
@@ -55,6 +56,7 @@ func main() {
 		2: func() { runDay(2, day02.Part1, day02.Part2) },
 		3: func() { runDay(3, day03.Part1, day03.Part2) },
 		4: func() { runDay(4, day04.Part1, day04.Part2) },
+		5: func() { runDay(5, day05.Part1, day05.Part2) },
 	}
 
 	requestedDay := dayRegistry[dayNr]
@@ -67,15 +69,15 @@ func main() {
 	requestedDay()
 }
 
-func runDay(nr int, part1 dailyChallenge, part2 dailyChallenge) {
+func runDay[TResult int | string](nr int, part1 func(string) TResult, part2 func(string) TResult) {
 	input := util.LoadDailyInput(nr)
 	normalizedNr := util.PadNumber(nr)
 
 	fmt.Printf("⭐️ Day %s\n", normalizedNr)
 
 	start1 := time.Now()
-	fmt.Printf("Part 1: %d (%s)\n", part1(input), time.Since(start1))
+	fmt.Printf("Part 1: %s (%s)\n", fmt.Sprint(part1(input)), time.Since(start1))
 
 	start2 := time.Now()
-	fmt.Printf("Part 2: %d (%s)\n", part2(input), time.Since(start2))
+	fmt.Printf("Part 2: %s (%s)\n", fmt.Sprint(part2(input)), time.Since(start2))
 }
