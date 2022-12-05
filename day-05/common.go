@@ -2,12 +2,11 @@ package day05
 
 import (
 	"fmt"
-	"os"
 	"regexp"
-	"strconv"
 	"strings"
 
 	"github.com/golang-collections/collections/stack"
+	"github.com/ruegerj/aoc-2022/util"
 )
 
 func parseStacks(input string) []*stack.Stack {
@@ -25,12 +24,7 @@ func parseStacks(input string) []*stack.Stack {
 			continue
 		}
 
-		stackNr, err := strconv.Atoi(nr)
-
-		if err != nil {
-			fmt.Println("Failed to parse number")
-			os.Exit(1)
-		}
+		stackNr := util.MustParseInt(nr)
 
 		offset := strings.IndexRune(stackLines[0], rune(nr[0]))
 
@@ -71,11 +65,7 @@ func parseInstructions(input string) [][]int {
 		parsedMatches := make([]int, 3)
 
 		for i, match := range matches {
-			parsedNr, err := strconv.Atoi(match)
-
-			if err != nil {
-				fmt.Println("Failed to parse number")
-			}
+			parsedNr := util.MustParseInt(match)
 
 			parsedMatches[i] = parsedNr
 		}

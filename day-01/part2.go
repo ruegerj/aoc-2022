@@ -1,10 +1,10 @@
 package day01
 
 import (
-	"fmt"
 	"sort"
-	"strconv"
 	"strings"
+
+	"github.com/ruegerj/aoc-2022/util"
 )
 
 func Part2(input string) int {
@@ -24,14 +24,7 @@ func Part2(input string) int {
 			continue
 		}
 
-		caloryCount, err := strconv.ParseInt(calories, 10, 64)
-
-		if err != nil {
-			fmt.Println("Failed to parse calories", err)
-			continue
-		}
-
-		caloriesOfElf += int(caloryCount)
+		caloriesOfElf += util.MustParseInt(calories)
 	}
 
 	elfCount := len(caloriesSum)
