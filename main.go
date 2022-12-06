@@ -11,11 +11,10 @@ import (
 	day03 "github.com/ruegerj/aoc-2022/day-03"
 	day04 "github.com/ruegerj/aoc-2022/day-04"
 	day05 "github.com/ruegerj/aoc-2022/day-05"
+	day06 "github.com/ruegerj/aoc-2022/day-06"
 	"github.com/ruegerj/aoc-2022/util"
 	"golang.org/x/exp/slices"
 )
-
-type dailyChallenge func(string) int
 
 func main() {
 	fmt.Println("     ___       ______     ______     ___     ___    ___    ___   ")
@@ -57,6 +56,7 @@ func main() {
 		3: func() { runDay(3, day03.Part1, day03.Part2) },
 		4: func() { runDay(4, day04.Part1, day04.Part2) },
 		5: func() { runDay(5, day05.Part1, day05.Part2) },
+		6: func() { runDay(6, day06.Part1, day06.Part2) },
 	}
 
 	requestedDay := dayRegistry[dayNr]
