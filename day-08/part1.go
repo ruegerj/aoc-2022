@@ -5,41 +5,25 @@ import (
 )
 
 func Part1(input string) int {
-	treeGrid := parseTreeGrid(input)
-	visibleTrees := len(treeGrid)*4 - 4
+	rows, cols := parseTreeGrid(input)
+	visibleTrees := len(rows)*4 - 4
 
-	for i, row := range treeGrid {
-		if i == 0 || i == len(row)-1 {
+	for i := 0; i < len(rows); i++ {
+		if i == 0 || i == len(rows)-1 {
 			continue
 		}
 
-		for j, tree := range row {
-			if j == 0 || j == len(row)-1 {
+		for j := 0; j < len(rows); j++ {
+			if j == 0 || j == len(rows)-1 {
 				continue
 			}
 
-			treesLeft := treeGrid[i][:j]
-			treesRight := treeGrid[i][j+1:]
-			treesAbove := make([]int, 0)
-			treesBelow := make([]int, 0)
+			tree := rows[i][j]
 
-			for k, r := range treeGrid {
-				if k == i {
-					continue
-				}
-
-				if k < i {
-					treesAbove = append(treesAbove, r[j])
-					continue
-				}
-
-				treesBelow = append(treesBelow, r[j])
-			}
-
-			highestLeft := util.Max(treesLeft)
-			highestRight := util.Max(treesRight)
-			highestAbove := util.Max(treesAbove)
-			highestBelow := util.Max(treesBelow)
+			highestLeft := util.Max(rows[i][:j])
+			highestAbove := util.Max(cols[j][:i])
+			highestRight := util.Max(rows[i][j+1:])
+			highestBelow := util.Max(cols[j][i+1:])
 
 			if tree <= highestLeft && tree <= highestRight && tree <= highestAbove && tree <= highestBelow {
 				continue

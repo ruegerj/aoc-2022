@@ -5,35 +5,19 @@ import (
 )
 
 func Part2(input string) int {
-	treeGrid := parseTreeGrid(input)
+	rows, cols := parseTreeGrid(input)
 	scenicScores := make([]int, 0)
 
-	for i, row := range treeGrid {
-		for j, tree := range row {
-			treesLeft := treeGrid[i][:j]
-			treesRight := treeGrid[i][j+1:]
-			treesAbove := make([]int, 0)
-			treesBelow := make([]int, 0)
+	for i := 0; i < len(rows); i++ {
+		for j := 0; j < len(rows); j++ {
+			tree := rows[i][j]
 
-			for k, r := range treeGrid {
-				if k == i {
-					continue
-				}
+			viewingDistanceLeft := calcViewingDistance(tree, util.Reverse(rows[i][:j]))
+			viewingDistanceAbove := calcViewingDistance(tree, util.Reverse(cols[j][:i]))
+			viewingDistanceRight := calcViewingDistance(tree, rows[i][j+1:])
+			viewingDistanceBelow := calcViewingDistance(tree, cols[j][i+1:])
 
-				if k < i {
-					treesAbove = append(treesAbove, r[j])
-					continue
-				}
-
-				treesBelow = append(treesBelow, r[j])
-			}
-
-			viewScoreLeft := calcViewingDistance(tree, util.Reverse(treesLeft))
-			viewScoreRight := calcViewingDistance(tree, treesRight)
-			viewScoreAbove := calcViewingDistance(tree, util.Reverse(treesAbove))
-			viewScoreBelow := calcViewingDistance(tree, treesBelow)
-
-			scenicScore := viewScoreLeft * viewScoreAbove * viewScoreRight * viewScoreBelow
+			scenicScore := viewingDistanceLeft * viewingDistanceAbove * viewingDistanceRight * viewingDistanceBelow
 
 			if scenicScore <= 0 {
 				continue
@@ -54,12 +38,12 @@ func calcViewingDistance(height int, trees []int) int {
 	distance := 0
 
 	for i, tree := range trees {
-		distance = i
+		distance = i + 1
 
 		if height <= tree {
 			break
 		}
 	}
 
-	return distance + 1
+	return distance
 }

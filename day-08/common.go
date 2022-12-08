@@ -6,17 +6,19 @@ import (
 	"github.com/ruegerj/aoc-2022/util"
 )
 
-func parseTreeGrid(input string) [][]int {
+func parseTreeGrid(input string) (map[int][]int, map[int][]int) {
 	lines := strings.Split(input, "\n")
-	treeGrid := make([][]int, len(lines))
+	rows := make(map[int][]int, len(lines))
+	cols := make(map[int][]int, len(lines))
 
 	for i, row := range lines {
-		treeGrid[i] = make([]int, len(row))
+		for j, num := range strings.Split(row, "") {
+			tree := util.MustParseInt(num)
 
-		for j, tree := range strings.Split(row, "") {
-			treeGrid[i][j] = util.MustParseInt(tree)
+			rows[i] = append(rows[i], tree)
+			cols[j] = append(cols[j], tree)
 		}
 	}
 
-	return treeGrid
+	return rows, cols
 }
