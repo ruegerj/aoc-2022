@@ -24,3 +24,13 @@ func Reverse[TItem any](slice []TItem) []TItem {
 
 	return reversed
 }
+
+func Includes[TItem any](slice []TItem, predicate func(TItem, int) bool) bool {
+	for i, item := range slice {
+		if predicate(item, i) {
+			return true
+		}
+	}
+
+	return false
+}

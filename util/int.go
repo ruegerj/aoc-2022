@@ -16,3 +16,11 @@ func MustParseInt(input string) int {
 
 	return number
 }
+
+func Abs(number int) int {
+	if number < 0 {
+		number = number * -1
+	}
+
+	return number
+}
