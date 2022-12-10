@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"strings"
 	"testing"
 )
 
 var dailyInput string
 
 func TestMain(m *testing.M) {
-	input, err := os.ReadFile(path.Join("..", "data", "09.txt"))
+	input, err := os.ReadFile(path.Join("..", "data", "10.txt"))
 
 	if err != nil {
 		fmt.Println("Failed to load input file", err)
@@ -33,10 +34,22 @@ func TestPart1(t *testing.T) {
 }
 
 func TestPart2(t *testing.T) {
-	expected := 0
+	expected := []string{
+		"# # # . . # # # . . # # # # . . # # . . # # # . . . # # . . # # # # . . # # . .",
+		"# . . # . # . . # . . . . # . # . . # . # . . # . # . . # . . . . # . # . . # .",
+		"# . . # . # # # . . . . # . . # . . . . # . . # . # . . # . . . # . . # . . # .",
+		"# # # . . # . . # . . # . . . # . # # . # # # . . # # # # . . # . . . # # # # .",
+		"# . . . . # . . # . # . . . . # . . # . # . # . . # . . # . # . . . . # . . # .",
+		"# . . . . # # # . . # # # # . . # # # . # . . # . # . . # . # # # # . # . . # .",
+	}
+
 	result := Part2(dailyInput)
 
-	if result != expected {
-		t.Errorf("Expected %d, produced %d", expected, result)
+	for i, row := range result {
+		printedRow := strings.Join(row, " ")
+
+		if printedRow != expected[i] {
+			t.Errorf("Expected %s\n produced %s", expected, printedRow)
+		}
 	}
 }

@@ -1,13 +1,12 @@
 package day10
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/ruegerj/aoc-2022/util"
 )
 
-func Part2(input string) int {
+func Part2(input string) [][]string {
 	const noopCmd = "noop"
 	const addXCmd = "addx"
 	const screenWidth = 40
@@ -61,11 +60,7 @@ func Part2(input string) int {
 		instructionPointer++
 	}
 
-	for _, row := range screen {
-		fmt.Println(row)
-	}
-
-	return 0
+	return screen
 }
 
 func printPixel(screen [][]string, row int, pos int, register int) {
