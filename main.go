@@ -15,6 +15,7 @@ import (
 	day07 "github.com/ruegerj/aoc-2022/day-07"
 	day08 "github.com/ruegerj/aoc-2022/day-08"
 	day09 "github.com/ruegerj/aoc-2022/day-09"
+	day10 "github.com/ruegerj/aoc-2022/day-10"
 	"github.com/ruegerj/aoc-2022/util"
 	"golang.org/x/exp/slices"
 )
@@ -54,15 +55,16 @@ func main() {
 	}
 
 	dayRegistry := map[int]func(){
-		1: func() { runDay(1, day01.Part1, day01.Part2) },
-		2: func() { runDay(2, day02.Part1, day02.Part2) },
-		3: func() { runDay(3, day03.Part1, day03.Part2) },
-		4: func() { runDay(4, day04.Part1, day04.Part2) },
-		5: func() { runDay(5, day05.Part1, day05.Part2) },
-		6: func() { runDay(6, day06.Part1, day06.Part2) },
-		7: func() { runDay(7, day07.Part1, day07.Part2) },
-		8: func() { runDay(8, day08.Part1, day08.Part2) },
-		9: func() { runDay(9, day09.Part1, day09.Part2) },
+		1:  func() { runDay(1, day01.Part1, day01.Part2) },
+		2:  func() { runDay(2, day02.Part1, day02.Part2) },
+		3:  func() { runDay(3, day03.Part1, day03.Part2) },
+		4:  func() { runDay(4, day04.Part1, day04.Part2) },
+		5:  func() { runDay(5, day05.Part1, day05.Part2) },
+		6:  func() { runDay(6, day06.Part1, day06.Part2) },
+		7:  func() { runDay(7, day07.Part1, day07.Part2) },
+		8:  func() { runDay(8, day08.Part1, day08.Part2) },
+		9:  func() { runDay(9, day09.Part1, day09.Part2) },
+		10: func() { runDay(10, day10.Part1, day10.Part2) },
 	}
 
 	requestedDay := dayRegistry[dayNr]
