@@ -3,10 +3,11 @@ package day03
 import (
 	"strings"
 
+	"github.com/ruegerj/aoc-2022/util"
 	"golang.org/x/exp/slices"
 )
 
-func Part2(input string) int {
+func Part2(input string) *util.Solution {
 	rucksacks := strings.Split(input, "\n")
 	priorityScore := 0
 
@@ -33,7 +34,7 @@ func Part2(input string) int {
 		priorityScore += itemPriority
 	}
 
-	return priorityScore
+	return util.NewSolution(2, priorityScore)
 }
 
 func chunkSlice(slice []string, chunkSize int) [][]string {

@@ -1,8 +1,12 @@
 package day04
 
-import "strings"
+import (
+	"strings"
 
-func Part2(input string) int {
+	"github.com/ruegerj/aoc-2022/util"
+)
+
+func Part2(input string) *util.Solution {
 	pairs := strings.Split(input, "\n")
 
 	overlapSectionsCount := 0
@@ -20,5 +24,5 @@ func Part2(input string) int {
 		overlapSectionsCount++
 	}
 
-	return overlapSectionsCount
+	return util.NewSolution(2, overlapSectionsCount)
 }

@@ -25,18 +25,18 @@ func TestMain(m *testing.M) {
 
 func TestPart1(t *testing.T) {
 	expected := "WSFTMRHPP"
-	result := Part1(dailyInput)
+	solution := Part1(dailyInput)
 
-	if result != expected {
-		t.Errorf("Expected %s, produced %s", expected, result)
+	if solution.Result.(string) != expected {
+		t.Errorf("Expected %s, produced %s", expected, solution.Result)
 	}
 }
 
 func TestPart2(t *testing.T) {
 	expected := "GSLCMFBRP"
-	result := Part2(dailyInput)
+	solution := Part2(dailyInput)
 
-	if result != expected {
-		t.Errorf("Expected %s, produced %s", expected, result)
+	if solution.Result.(string) != expected {
+		t.Errorf("Expected %s, produced %s", expected, solution.Result)
 	}
 }

@@ -6,7 +6,7 @@ import (
 	"github.com/ruegerj/aoc-2022/util"
 )
 
-func Part2(input string) [][]string {
+func Part2(input string) *util.Solution {
 	const noopCmd = "noop"
 	const addXCmd = "addx"
 	const screenWidth = 40
@@ -60,7 +60,7 @@ func Part2(input string) [][]string {
 		instructionPointer++
 	}
 
-	return screen
+	return util.NewSolution(2, screen)
 }
 
 func printPixel(screen [][]string, row int, pos int, register int) {

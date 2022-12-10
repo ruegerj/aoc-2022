@@ -7,7 +7,7 @@ import (
 	"github.com/ruegerj/aoc-2022/util"
 )
 
-func Part2(input string) int {
+func Part2(input string) *util.Solution {
 	const ropeLength = 10
 	commands := strings.Split(input, "\n")
 
@@ -47,7 +47,7 @@ func Part2(input string) int {
 		}
 	}
 
-	return len(visitedCoordinates)
+	return util.NewSolution(2, len(visitedCoordinates))
 }
 
 func createRope(length int) (*list.List, *Point, *Point) {

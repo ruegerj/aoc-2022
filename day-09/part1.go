@@ -6,7 +6,7 @@ import (
 	"github.com/ruegerj/aoc-2022/util"
 )
 
-func Part1(input string) int {
+func Part1(input string) *util.Solution {
 	commands := strings.Split(input, "\n")
 
 	head := NewPoint(0, 0)
@@ -37,5 +37,5 @@ func Part1(input string) int {
 		}
 	}
 
-	return len(visitedCoordinates)
+	return util.NewSolution(1, len(visitedCoordinates))
 }

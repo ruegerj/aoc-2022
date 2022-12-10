@@ -2,9 +2,11 @@ package day03
 
 import (
 	"strings"
+
+	"github.com/ruegerj/aoc-2022/util"
 )
 
-func Part1(input string) int {
+func Part1(input string) *util.Solution {
 	rucksacks := strings.Split(input, "\n")
 	priorityScore := 0
 
@@ -23,5 +25,5 @@ func Part1(input string) int {
 		priorityScore += itemPriority
 	}
 
-	return priorityScore
+	return util.NewSolution(1, priorityScore)
 }

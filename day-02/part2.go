@@ -1,8 +1,12 @@
 package day02
 
-import "strings"
+import (
+	"strings"
 
-func Part2(input string) int {
+	"github.com/ruegerj/aoc-2022/util"
+)
+
+func Part2(input string) *util.Solution {
 	operandLookup := map[string]string{
 		"A": Rock,
 		"B": Paper,
@@ -30,5 +34,5 @@ func Part2(input string) int {
 		score += operandScores[loosingCombination[opponent]]
 	}
 
-	return score
+	return util.NewSolution(2, score)
 }

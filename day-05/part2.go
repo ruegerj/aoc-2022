@@ -2,9 +2,11 @@ package day05
 
 import (
 	"strings"
+
+	"github.com/ruegerj/aoc-2022/util"
 )
 
-func Part2(input string) string {
+func Part2(input string) *util.Solution {
 	parts := strings.Split(input, "\n\n")
 
 	stacks := parseStacks(parts[0])
@@ -26,5 +28,5 @@ func Part2(input string) string {
 		}
 	}
 
-	return getTopLevelCrates(stacks)
+	return util.NewSolution(2, getTopLevelCrates(stacks))
 }

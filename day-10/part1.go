@@ -6,7 +6,7 @@ import (
 	"github.com/ruegerj/aoc-2022/util"
 )
 
-func Part1(input string) int {
+func Part1(input string) *util.Solution {
 	const noopCmd = "noop"
 	const addXCmd = "addx"
 
@@ -52,5 +52,5 @@ func Part1(input string) int {
 		signalStrengthSum += signalStrengths[i]
 	}
 
-	return signalStrengthSum
+	return util.NewSolution(1, signalStrengthSum)
 }

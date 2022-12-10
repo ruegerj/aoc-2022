@@ -7,7 +7,7 @@ import (
 	"github.com/ruegerj/aoc-2022/util"
 )
 
-func Part2(input string) int {
+func Part2(input string) *util.Solution {
 	if !strings.HasSuffix(input, "\n") {
 		input += "\n"
 	}
@@ -37,5 +37,5 @@ func Part2(input string) int {
 		topThreeSum += calories
 	}
 
-	return topThreeSum
+	return util.NewSolution(2, topThreeSum)
 }

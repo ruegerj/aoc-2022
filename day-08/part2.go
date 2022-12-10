@@ -4,7 +4,7 @@ import (
 	"github.com/ruegerj/aoc-2022/util"
 )
 
-func Part2(input string) int {
+func Part2(input string) *util.Solution {
 	rows, cols := parseTreeGrid(input)
 	scenicScores := make([]int, 0)
 
@@ -27,7 +27,7 @@ func Part2(input string) int {
 		}
 	}
 
-	return util.Max(scenicScores)
+	return util.NewSolution(2, util.Max(scenicScores))
 }
 
 func calcViewingDistance(height int, trees []int) int {

@@ -5,9 +5,10 @@ import (
 	"strings"
 
 	"github.com/golang-collections/collections/set"
+	"github.com/ruegerj/aoc-2022/util"
 )
 
-func Part1(input string) int {
+func Part1(input string) *util.Solution {
 	chars := strings.Split(input, "")
 
 	const uniquePackageCount = 4
@@ -33,5 +34,5 @@ func Part1(input string) int {
 		charHistory.Remove(oldest)
 	}
 
-	return startOfPacketIndex + 1
+	return util.NewSolution(1, startOfPacketIndex+1)
 }

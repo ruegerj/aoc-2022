@@ -3,9 +3,11 @@ package day07
 import (
 	"sort"
 	"strings"
+
+	"github.com/ruegerj/aoc-2022/util"
 )
 
-func Part2(input string) int {
+func Part2(input string) *util.Solution {
 	const requiredSpace = 30000000
 	const diskSpace = 70000000
 
@@ -29,7 +31,7 @@ func Part2(input string) int {
 
 	sort.Sort(sizeList)
 
-	return sizeList[0].size
+	return util.NewSolution(2, sizeList[0].size)
 }
 
 // Implement sort interface for Directory array

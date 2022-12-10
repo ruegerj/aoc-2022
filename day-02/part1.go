@@ -2,9 +2,11 @@ package day02
 
 import (
 	"strings"
+
+	"github.com/ruegerj/aoc-2022/util"
 )
 
-func Part1(input string) int {
+func Part1(input string) *util.Solution {
 	games := strings.Split(input, "\n")
 	score := 0
 
@@ -36,5 +38,5 @@ func Part1(input string) int {
 		score += 6
 	}
 
-	return score
+	return util.NewSolution(1, score)
 }

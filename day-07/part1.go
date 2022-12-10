@@ -2,9 +2,11 @@ package day07
 
 import (
 	"strings"
+
+	"github.com/ruegerj/aoc-2022/util"
 )
 
-func Part1(input string) int {
+func Part1(input string) *util.Solution {
 	const dirSizeThreshold = 100000
 
 	lines := strings.Split(input, "\n")
@@ -23,5 +25,5 @@ func Part1(input string) int {
 		totalSize += size
 	}
 
-	return totalSize
+	return util.NewSolution(1, totalSize)
 }

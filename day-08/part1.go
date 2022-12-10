@@ -4,7 +4,7 @@ import (
 	"github.com/ruegerj/aoc-2022/util"
 )
 
-func Part1(input string) int {
+func Part1(input string) *util.Solution {
 	rows, cols := parseTreeGrid(input)
 	visibleTrees := len(rows)*4 - 4
 
@@ -33,5 +33,5 @@ func Part1(input string) int {
 		}
 	}
 
-	return visibleTrees
+	return util.NewSolution(1, visibleTrees)
 }

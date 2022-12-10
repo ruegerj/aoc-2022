@@ -77,15 +77,17 @@ func main() {
 	requestedDay()
 }
 
-func runDay[TResult int | string](nr int, part1 func(string) TResult, part2 func(string) TResult) {
+func runDay(nr int, part1 func(string) *util.Solution, part2 func(string) *util.Solution) {
 	input := util.LoadDailyInput(nr)
 	normalizedNr := util.PadNumber(nr)
 
 	fmt.Printf("⭐️ Day %s\n", normalizedNr)
 
 	start1 := time.Now()
-	fmt.Printf("Part 1: %s (%s)\n", fmt.Sprint(part1(input)), time.Since(start1))
+	solution1 := part1(input)
+	solution1.Print(time.Since(start1))
 
 	start2 := time.Now()
-	fmt.Printf("Part 2: %s (%s)\n", fmt.Sprint(part2(input)), time.Since(start2))
+	solution2 := part2(input)
+	solution2.Print(time.Since(start2))
 }

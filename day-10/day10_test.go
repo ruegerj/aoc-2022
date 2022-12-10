@@ -26,10 +26,10 @@ func TestMain(m *testing.M) {
 
 func TestPart1(t *testing.T) {
 	expected := 13440
-	result := Part1(dailyInput)
+	solution := Part1(dailyInput)
 
-	if result != expected {
-		t.Errorf("Expected %d, produced %d", expected, result)
+	if solution.Result.(int) != expected {
+		t.Errorf("Expected %d, produced %d", expected, solution.Result)
 	}
 }
 
@@ -43,9 +43,9 @@ func TestPart2(t *testing.T) {
 		"# . . . . # # # . . # # # # . . # # # . # . . # . # . . # . # # # # . # . . # .",
 	}
 
-	result := Part2(dailyInput)
+	solution := Part2(dailyInput)
 
-	for i, row := range result {
+	for i, row := range solution.Result.([][]string) {
 		printedRow := strings.Join(row, " ")
 
 		if printedRow != expected[i] {
