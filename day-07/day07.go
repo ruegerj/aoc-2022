@@ -1,10 +1,60 @@
 package day07
 
 import (
+	"sort"
 	"strings"
 
 	"github.com/ruegerj/aoc-2022/util"
 )
+
+func Part1(input string) *util.Solution {
+	const dirSizeThreshold = 100000
+
+	lines := strings.Split(input, "\n")
+
+	dirMap := parseInput(lines)
+
+	var totalSize int = 0
+
+	for _, dir := range dirMap {
+		size := dir.EffectiveSize()
+
+		if size > dirSizeThreshold {
+			continue
+		}
+
+		totalSize += size
+	}
+
+	return util.NewSolution(1, totalSize)
+}
+
+func Part2(input string) *util.Solution {
+	const requiredSpace = 30000000
+	const diskSpace = 70000000
+
+	lines := strings.Split(input, "\n")
+
+	dirMap := parseInput(lines)
+	sizeList := make(DirectorySizeList, 0)
+
+	totalSize := dirMap["/"].EffectiveSize()
+	spaceToReclaim := requiredSpace - (diskSpace - totalSize)
+
+	for path, dir := range dirMap {
+		size := dir.EffectiveSize()
+
+		if size < spaceToReclaim {
+			continue
+		}
+
+		sizeList = append(sizeList, DirectorySize{path, size})
+	}
+
+	sort.Sort(sizeList)
+
+	return util.NewSolution(2, sizeList[0].size)
+}
 
 type Directory struct {
 	Name        string
@@ -38,6 +88,26 @@ func (dir *Directory) EffectiveSize() int {
 	}
 
 	return size
+}
+
+// Implement sort interface for Directory array
+type DirectorySize struct {
+	path string
+	size int
+}
+
+type DirectorySizeList []DirectorySize
+
+func (list DirectorySizeList) Len() int {
+	return len(list)
+}
+
+func (list DirectorySizeList) Swap(i, j int) {
+	list[i], list[j] = list[j], list[i]
+}
+
+func (list DirectorySizeList) Less(i, j int) bool {
+	return list[i].size < list[j].size
 }
 
 func parseInput(lines []string) map[string]*Directory {
