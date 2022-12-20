@@ -16,3 +16,4 @@ Solutions for this years [Advent of Code](https://adventofcode.com/2022), implem
 - [Day-12](https://github.com/ruegerj/aoc-2022/blob/main/day-12/day12.go): Hill Climbing Algorithm
 - [Day-13](https://github.com/ruegerj/aoc-2022/blob/main/day-13/day13.go): Distress Signal
 - [Day-14](https://github.com/ruegerj/aoc-2022/blob/main/day-14/day14.go): Regolith Reservoir
+- [Day-15](https://github.com/ruegerj/aoc-2022/blob/main/day-15/day15.go): Beacon Exclusion Zone

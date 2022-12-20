@@ -113,14 +113,7 @@ type ThrowTest struct {
 func NewMonkeyFromDefinition(definition string) (int, *Monkey) {
 	monkeyDataMatcher := regexp.MustCompile(`^Monkey (?P<nr>\d+):\n +Starting items: (?P<items>[\d, ]+)\n +Operation: new = (?P<leftOperand>[old\d]+) (?P<operator>[+*]{1}) (?P<rightOperand>[old\d]+)\n +Test: divisible by (?P<divisibleBy>\d+)\n +If true: throw to monkey (?P<passedTarget>\d+)\n +If false: throw to monkey (?P<failedTarget>\d+)$`)
 
-	match := monkeyDataMatcher.FindStringSubmatch(definition)
-
-	definitionArgs := make(map[string]string)
-	for i, name := range monkeyDataMatcher.SubexpNames() {
-		if i > 0 && i <= len(match) {
-			definitionArgs[name] = match[i]
-		}
-	}
+	definitionArgs := util.MatchNamedSubgroups(monkeyDataMatcher, definition)
 
 	monkey := Monkey{
 		InspectCount: 0,
